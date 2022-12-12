@@ -1,4 +1,4 @@
-# Higher / Lower
+# Higher / Lower Game
 This game compares two different instagram account followers. If you get it right, the you score one (1) point and the second account becomes the first account for the next comparison
 ```
 /$$   /$$ /$$           /$$                          
