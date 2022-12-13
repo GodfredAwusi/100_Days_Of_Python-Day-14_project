@@ -17,14 +17,18 @@ def play_game():
     while not game_over:
         # Randomly selecting second account from the game data and removing it so it doesn't repeat
         account_b = data.pop(random.randint(0, len(data)-1))
+
         print(logo)
+
         # Printing current score
         if score > 0:
             print(f"You're right! current score is {score} ")
+
         # first comparison
         print(f"Compare A: {account_a['name']}, a/an {account_a['description']}, from {account_a['country']} ")
         print(vs)
         print(f"Compare B: {account_b['name']}, a/an {account_b['description']}, from {account_b['country']} ")
+
         choice = input("Who has the more followers! Type 'A' or 'B': ").lower()
 
         # Checking the answer
