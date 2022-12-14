@@ -5,30 +5,29 @@ from game_data import data
 
 # Function to clear the screen
 def cls():
+    """This clears the console and it's cross-platform"""
     os.system('cls' if os.name == 'nt' else 'clear')
 
-# Function to begin the game
+# Function to play the game
 def play_game():
     game_over = False
     score = 0
-    # Randomly selecting first account from the game data and removing it so it doesn't repeat
-    account_a = data.pop(random.randint(0, len(data)-1)) # Am using the pop() function in order to avoid the two random selection being the same. The pop() function removes that item from the list after it is selected
-    # While loop to allow more comparison
+
+    # Randomly selecting first two accounts for comparison and also removing them so they don't repeat
+    account_a = data.pop(random.randint(0, len(data)-1))
+    account_b = data.pop(random.randint(0, len(data)-1))
+
     while not game_over:
-        # Randomly selecting second account from the game data and removing it so it doesn't repeat
-        account_b = data.pop(random.randint(0, len(data)-1))
-
         print(logo)
-
-        # Printing current score
+        # Printing current score if the user has actually scored a point or more
         if score > 0:
             print(f"You're right! current score is {score} ")
 
-        # first comparison
+        # Printing the first comparison
         print(f"Compare A: {account_a['name']}, a/an {account_a['description']}, from {account_a['country']} ")
         print(vs)
         print(f"Compare B: {account_b['name']}, a/an {account_b['description']}, from {account_b['country']} ")
-
+        # User's answer input
         choice = input("Who has the more followers! Type 'A' or 'B': ").lower()
 
         # Checking the answer
@@ -46,6 +45,8 @@ def play_game():
 
         # Making account_b the next account_a
         account_a = account_b
+        # The next account_b
+        account_b = data.pop(random.randint(0, len(data)-1))
     # Play again option
     play_again =input("Do you want to play again? Type 'y' for yes or 'n' for no: ").lower()
     if play_again == "y":
